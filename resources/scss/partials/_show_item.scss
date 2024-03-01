@@ -1,0 +1,207 @@
+@use './variables' as *;
+
+
+.items-show {
+  font-family: 'Outfit', sans-serif;
+
+  a {
+    text-decoration: none;
+    color: currentColor;
+  }
+
+  ul,
+  li {
+    list-style: none;
+  }
+
+  .wrapper {
+    height: calc(100vh - $height-header);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    .next-item,
+    .previous-item {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid $orange;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 96%;
+      font-size: 80px;
+      color: $orange;
+    }
+
+    .next-item {
+      right: -41px;
+      background-color: $linen;
+      border-radius: 0 25px 25px 0;
+      border-left: 1px solid transparent;
+      box-shadow: 5px 0px 5px 3px $orange-hover;
+
+      &:hover {
+        box-shadow: 5px 0px 5px 6px $orange;
+        transition: $transition;
+      }
+
+    }
+
+    .previous-item {
+      left: -41px;
+      background-color: rgba(255, 242, 231, 0.9);
+      border-radius: 25px 0 0 25px;
+      border-right: 1px solid transparent;
+      box-shadow: -5px 0px 5px 3px $orange-hover;
+
+      &:hover {
+        box-shadow: -5px 0px 5px 6px $orange;
+        transition: $transition;
+      }
+    }
+
+    .cards {
+      position: relative;
+      border-radius: 1rem;
+      background-color: rgba(255, 242, 231, 0.9);
+      border: 1px solid $orange;
+      padding: 2rem;
+      color: $charcoal;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 600px;
+      box-shadow: 5px 0px 5px 5px $orange-hover;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .item-name {
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .card.image-card {
+        aspect-ratio: 1;
+        border: 1px solid $light-orange;
+        border-radius: 0px;
+        box-shadow: 0px 0px 10px 1px $light-orange;
+        background: transparent;
+        margin-bottom: 30px;
+
+        img {
+          border-radius: 0px;
+          max-width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+        }
+      }
+
+      .card.description-card {
+        border-radius: 0px;
+        border: none;
+        background: transparent;
+
+        li {
+          margin-top: 1rem;
+          font-size: 1rem;
+        }
+
+        .price {
+          font-weight: bold;
+          border: 2px solid green;
+          background-color: white;
+          width: 80px;
+          text-align: center;
+          border-radius: 25px;
+        }
+
+        .flags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.8rem;
+          align-items: center;
+          .label-veg {
+            color: green;
+            border: 1px solid green;
+
+          }
+          .label-spicy {
+            color: red;
+            border: 1px solid red;
+
+          }
+          .label-gf {
+            color: gold;
+            border: 1px solid gold;
+
+          }
+          // justify-content: center;
+        }
+
+        .flags>* {
+          white-space: nowrap;
+          font-size: 1rem;
+          padding: 0.25rem 1rem;
+          border-radius: 25px;
+          // border: 1px solid $orange;
+          // background-color: $orange;
+          color: white;
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+        }
+      }
+      .buttons {
+        position: absolute;
+        left: 5%;
+        bottom: 1rem;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-top: 20%;
+        gap: 2rem;
+
+        @media (max-width: 768px) {
+          justify-content: space-between;
+        }
+
+        .edit-btn,
+        .delete-btn {
+          padding: 0.25rem 1rem;
+          border: 2px solid $orange;
+          border-radius: 25px;
+          background-color: $orange;
+          color: white;
+          font-size: 1.2rem;
+          cursor: pointer;
+          transition: $transition;
+
+          &:hover {
+            background-color: rgb(252, 128, 25, 25%);
+            color: $orange;
+          }
+        }
+
+        .delete-btn {
+          background-color: red;
+          border: 2px solid red;
+
+          &:hover {
+            background-color: rgb(255, 0, 0, 25%);
+            color: red;
+          }
+        }
+
+        .edit-btn:active,
+        .delete-btn:active {
+          transform: scale(0.9);
+          transform: $transition_short;
+        }
+      }
+    }
+  }
+}

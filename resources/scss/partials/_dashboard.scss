@@ -1,0 +1,280 @@
+@use './variables'as *;
+@import '~bootstrap/scss/bootstrap';
+
+
+.section-dashboard {
+    a {
+        text-decoration: none;
+        color: currentColor;
+    }
+
+    .dashboard-card-body {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .statistics-card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $orange;
+        border-radius: 0.75rem;
+        background-color: $linen;
+        padding: 0.75rem;
+
+        .btn-statistics {
+            background-color: $orange;
+            border: 1px solid $orange;
+            color: $white;
+            padding: 0.5rem 1rem;
+            border-radius: 5rem;
+            cursor: pointer;
+            align-self: flex-end;
+            transition: $transition;
+
+            &:hover {
+                background-color: transparent;
+                color: $orange;
+
+            }
+
+        }
+
+        #my-chart {
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    .card-img {
+        position: relative;
+        border: 1px solid $orange;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        height: 20vh;
+        grid-column: 1;
+
+        @media (min-width: 768px) {
+            height: 40vh;
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            inset: 0;
+            // mask-image: linear-gradient(to right, transparent 25%, black 70%);
+            // backdrop-filter: blur(4px);
+            // background: linear-gradient(to right, transparent 25%, rgba(0, 0, 0, 0.567) 70%);
+            background: rgba($color: #000000, $alpha: 0.5);
+
+            @media (min-width: 992px) {
+                background: linear-gradient(to right, transparent 10%, rgba(0, 0, 0, 0.6) 90%);
+            }
+        }
+
+
+
+        .user-detail-card {
+            position: absolute;
+            inset: 0;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            color: white;
+            z-index: 10;
+
+            @media (min-width: 992px) {
+                justify-content: flex-end;
+                text-align: right;
+            }
+
+            ul {
+                padding: 0;
+                margin: 0;
+            }
+
+        }
+
+        .business-name {
+            font-size: 2rem;
+            font-weight: 600;
+
+            @media (min-width: 992px) {
+                font-size: 3rem;
+            }
+        }
+
+        .user-detail {
+            font-weight: 500;
+            font-size: 16px;
+
+        }
+
+
+    }
+
+    .shop-detail-card {
+        border: 1px solid $orange;
+        border-radius: 0.75rem;
+        background-color: $linen;
+        padding: 0.75rem;
+
+    }
+
+    .title-card {
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .items-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+
+        @media (min-width: 576px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .item {
+        position: relative;
+        border-radius: 0.5rem;
+        aspect-ratio: 1;
+        overflow: hidden;
+        transition: $transition;
+
+        &::after {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color: #000000, $alpha: 0.4);
+            filter: blur(4px);
+            transition: $transition;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+
+        .name {
+            position: absolute;
+            width: 100%;
+            top: 120%;
+            left: 50%;
+            padding: 1rem;
+            transform: translate(-50%, -50%);
+            color: $white;
+            font-weight: 600;
+            z-index: 10;
+            opacity: 0;
+            transition: $transition;
+        }
+
+        &:hover .name {
+
+            top: 50%;
+            opacity: 1;
+
+        }
+    }
+
+    .resturant-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+    .item-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition;
+
+    }
+
+    .item:hover img {
+        transform: scale(1.1);
+    }
+
+    .item-img-blur {
+        filter: blur(2px);
+    }
+
+    .show-more {
+        // position: absolute;
+        display: grid;
+        place-items: center;
+
+        // font-size: 50px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            background-color: $orange;
+            border: 1px solid $orange;
+            height: 100%;
+            transition: $transition;
+
+            &:hover {
+                background-color: transparent;
+                color: $orange;
+
+
+            }
+        }
+
+
+
+        .plus-dark {
+            color: black;
+        }
+
+        // &:hover  {
+        //     transition: 0.5s;
+        //     height: 100%;
+        //     color: $orange;
+
+        //     .plus-dark {
+        //         color: $orange;
+        //     }
+        // }
+    }
+
+    .statistic-img {
+        width: 100%;
+        border-radius: 10px;
+    }
+}
+
+
+
+
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 992px) {
+
+    .section-dashboard {
+
+        .dashboard-card-body {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card-img {
+            grid-column: 1/3;
+
+
+        }
+    }
+}
